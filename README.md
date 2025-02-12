@@ -1,6 +1,6 @@
-# ChatGPTAutomation
+# Automate-GPT
 
-`ChatGPTAutomation` is a Python library that allows users to automate interactions with ChatGPT through a web driver. This library simplifies the process of sending prompts to ChatGPT and receiving responses in an automated manner.
+`Automate-GPT` is a Python library that allows users to automate interactions with ChatGPT through a web driver. This library simplifies the process of sending prompts to ChatGPT and receiving responses in an automated manner.
 
 ---
 
@@ -9,12 +9,13 @@
 - Automate interactions with ChatGPT.
 - Use an undetected Chrome driver to bypass detection.
 - Simplified interface for sending prompts and retrieving responses.
-
+- Supports Reset Chat feature to clear the chat history.
+- Supports Search internet feature to search for information.
 ---
 
 ## Installation
 
-To install `ChatGPTAutomation`, use pip:
+To install `Automate-GPT`, use pip:
 
 ```bash
 pip install Automate-GPT
@@ -31,12 +32,12 @@ pip install Automate-GPT
 
 ## Usage
 
-Here is a basic example of how to use the `ChatGPTAutomation` library:
+Here is a basic example of how to use the `Automate-GPT` library:
 
 ### Example
 
 ```python
-from Automate-GPT import ChatGPTAutomation
+from Automate_GPT import ChatGPTAutomation
 import undetected_chromedriver as uc
 
 # Initialize the undetected Chrome driver
@@ -44,17 +45,18 @@ driver = uc.Chrome()
 
 # Initialize ChatGPTAutomation with the Chrome driver
 chatbot = ChatGPTAutomation(driver)
-
-# Send a prompt to ChatGPT
-response = chatbot.prompt("What is the capital of France?")
+response = chatbot.chat("What is the capital of France?")
 print(response)  # Output: Paris
+chatbot.reset_chat()
+chatbot.search_enable(False)
+chatbot.get_conversation()
 ```
 
 ---
 
 ## API Reference
 
-### `ChatGPTAutomation`
+### `Automate_GPT.ChatGPTAutomation`
 
 A class to automate interactions with ChatGPT.
 
@@ -74,8 +76,18 @@ Sends a prompt to ChatGPT and retrieves the response.
 - **Returns**:
   - (*str*): The response from ChatGPT.
 
----
+#### **`reset_chat(self)`**
+Resets the chat history.
 
+#### **`search_enable(self, enable: bool)`**
+Enables or disables the search internet feature.
+- **Parameters**:
+  - `enable` (*bool*): Whether to enable or disable the search internet feature.
+#### **`get_conversation(self) -> list[dict]`**
+Retrieves the conversation history.
+- **Returns**:
+  - (*list[dict]*): The conversation history.
+---
 ## Notes
 
 - Ensure you have the latest version of Chrome and the corresponding chromedriver installed.
